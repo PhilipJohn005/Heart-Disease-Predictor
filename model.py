@@ -38,7 +38,7 @@ def train_model():
     with open('models/features.pkl', 'wb') as f:
         pickle.dump(X.columns.tolist(), f)
 
-    print("✅ Model and features saved successfully.")
+    print("Model and features saved successfully.")
 
 if __name__ == "__main__":
     train_model()
