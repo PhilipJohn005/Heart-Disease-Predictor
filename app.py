@@ -2,15 +2,31 @@ import streamlit as st
 import pickle
 import pandas as pd
 
-# Load model and feature list
-with open('models/model.pkl', 'rb') as f:
-    model = pickle.load(f)
-
+# Load feature list
 with open('models/features.pkl', 'rb') as f:
     model_features = pickle.load(f)
 
+# Available models
+model_options = {
+    "Logistic Regression": "models/Logistic_Regression.pkl",
+    "Random Forest": "models/model.pkl",
+    "K-Nearest Neighbors": "models/KNN.pkl",
+    "XGBoost": "models/XGBoost.pkl",
+    "Gradient Boosting": "models/Gradient_Boosting.pkl"
+}
+
+# Streamlit UI
 st.set_page_config(page_title="Heart Disease Predictor")
 st.title("❤️ Heart Disease Prediction App")
+
+# Model selector
+model_choice = st.selectbox("Choose a model", list(model_options.keys()))
+with open(model_options[model_choice], 'rb') as f:
+    model = pickle.load(f)
+
+# Sidebar EDA option
+st.sidebar.title("📊 Exploratory Data Analysis")
+
 
 # Form inputs
 age = st.number_input("Age", 1, 120, 45)
@@ -27,7 +43,7 @@ slope = st.selectbox("Slope", ["upsloping", "flat", "downsloping"])
 ca = st.selectbox("Number of Major Vessels", [0, 1, 2, 3])
 thal = st.selectbox("Thalassemia", ["normal", "fixed defect", "reversible defect"])
 
-# Convert inputs to one-hot encoded row
+# One-hot encode inputs
 input_dict = {
     "age": age,
     "trestbps": trestbps,
@@ -53,21 +69,20 @@ input_dict = {
     "thal_reversible defect": 1 if thal == "reversible defect" else 0
 }
 
-# Add any missing columns with 0
+# Add missing columns
 for col in model_features:
     if col not in input_dict:
         input_dict[col] = 0
 
-# Ensure correct column order
+# Ensure column order
 input_df = pd.DataFrame([input_dict])[model_features]
 
-# Prediction
+# Predict
 if st.button("Predict"):
     pred = model.predict(input_df)[0]
     proba = model.predict_proba(input_df)[0][1]
-
     st.subheader("🩺 Prediction Result:")
     if pred == 1:
         st.error(f"⚠️ Likely Heart Disease (Confidence: {proba:.2f})")
     else:
-        st.success(f"✅ No Heart Disease Detected (Confidence: {1-proba:.2f})")
+        st.success(f"✅ No Heart Disease Detected (Confidence: {1 - proba:.2f})")
