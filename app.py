@@ -1,6 +1,8 @@
 import streamlit as st
 import pickle
 import pandas as pd
+from ydata_profiling import ProfileReport
+from streamlit_pandas_profiling import st_profile_report
 
 # Load feature list
 with open('models/features.pkl', 'rb') as f:
@@ -19,15 +21,13 @@ model_options = {
 st.set_page_config(page_title="Heart Disease Predictor")
 st.title("❤️ Heart Disease Prediction App")
 
-# Model selector
-model_choice = st.selectbox("Choose a model", list(model_options.keys()))
-with open(model_options[model_choice], 'rb') as f:
+
+with open('./models/Logistic_Regression.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # Sidebar EDA option
-st.sidebar.title("📊 Exploratory Data Analysis")
 
-
+    
 # Form inputs
 age = st.number_input("Age", 1, 120, 45)
 sex = st.selectbox("Sex", ["male", "female"])
