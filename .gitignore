@@ -14,8 +14,6 @@ env/
 .ipynb_checkpoints/
 
 # Model files
-models/model.pkl
-models/features.pkl
 
 # IDE specific files (e.g., PyCharm, VSCode)
 .vscode/
