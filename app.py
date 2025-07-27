@@ -19,6 +19,7 @@ model_options = {
 
 # Streamlit UI
 st.set_page_config(page_title="Heart Disease Predictor")
+st.set_page_config(layout="wide")
 st.title("❤️ Heart Disease Prediction App")
 
 
