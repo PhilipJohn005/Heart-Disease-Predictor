@@ -22,4 +22,3 @@ env/
 *.sublime-workspace
 
 # Data files (if not needed for the repo)
-data/
