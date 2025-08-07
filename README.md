@@ -51,7 +51,6 @@ git clone https://github.com/your-username/diabetes-predictor
 cd diabetes-predictor
 
 # 2. Install dependencies
-pip install -r requirements.txt
 
 # 3. Run the app
 streamlit run app.py
