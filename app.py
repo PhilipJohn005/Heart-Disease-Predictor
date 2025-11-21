@@ -84,6 +84,6 @@ if st.button("Predict"):
     proba = model.predict_proba(input_df)[0][1]
     st.subheader("🩺 Prediction Result:")
     if pred == 1:
-        st.error(f"⚠️ Likely Heart Disease (Confidence: {proba:.2f})")
+        st.error(f"Likely Heart Disease (Confidence: {proba:.2f})")
     else:
-        st.success(f"✅ No Heart Disease Detected (Confidence: {1 - proba:.2f})")
+        st.success(f"No Heart Disease Detected (Confidence: {1 - proba:.2f})")

@@ -1,12 +1,12 @@
-# 🩺 Diabetes Prediction Web App
+# 🩺 Heart Disease Prediction Web App
 
-A simple and interactive **Streamlit** web application that predicts whether a person has diabetes or not using a **Logistic Regression** model. Also includes a dataset **Playground** for Exploratory Data Analysis (EDA) using `ydata-profiling`.
+A simple and interactive **Streamlit** web application that predicts whether a person has Heart disease or not using a **Logistic Regression** model. Also includes a dataset **Playground** for Exploratory Data Analysis (EDA) using `ydata-profiling`.
 
 ---
 
 ## 🎯 Features
 
-- ✅ Predicts diabetes based on user inputs using Logistic Regression
+- ✅ Predicts Heart disease based on user inputs using Logistic Regression
 - 📊 Full dataset EDA using YData Profiling (in a separate page)
 - 🧪 Integrated with Streamlit's interactive UI
 - 🔒 Lightweight and secure deployment using Streamlit Cloud
@@ -47,8 +47,8 @@ A simple and interactive **Streamlit** web application that predicts whether a p
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-username/diabetes-predictor
-cd diabetes-predictor
+git clone https://github.com/your-username/heart-disease-predictor
+cd heart-disease-predictor
 
 # 2. Install dependencies
 pip install -r requirements.txt
